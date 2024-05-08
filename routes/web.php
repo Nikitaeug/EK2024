@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Teamcontroller;
 use App\Http\Controllers\ProfileController;
@@ -19,5 +20,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/teams', [Teamcontroller::class, 'index'])->name('teams.index');
+Route::get('/games', [GameController::class, 'index'])->name('games.index');
 
 require __DIR__.'/auth.php';
