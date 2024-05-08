@@ -21,5 +21,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/teams', [Teamcontroller::class, 'index'])->name('teams.index');
 Route::get('/games', [GameController::class, 'index'])->name('games.index');
+Route::get('/games/{game}/edit', [GameController::class, 'edit'])->name('games.edit');
 
 require __DIR__.'/auth.php';
