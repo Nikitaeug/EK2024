@@ -14,9 +14,18 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div>
-                        @foreach ($teams as $team)
-                            {{ $team->name}}
-                        @endforeach
+                        {{$team->name}}
+                    </div>
+                    <div>
+                        {{$team->tla}}
+                    </div>
+                    <div>
+                        <img src="{{$team->crest}}" class="w-20 h-20"/>
+                    </div>
+                    <div>
+                        <a href="{{$team->website}}" target="_blank" class="text-blue-700">
+                            {{$team->website}}
+                        </a>
                     </div>
                 </div>
             </div>

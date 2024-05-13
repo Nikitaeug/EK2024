@@ -12,4 +12,9 @@ class Teamcontroller extends Controller
         $teams = Team::all();
         return view('teams.index', ['teams' => $teams]);
     }
+    public function show($id)
+    {
+        $team = Team::find($id);
+        return view('teams.team', ['team' => $team]);
+    }
 }

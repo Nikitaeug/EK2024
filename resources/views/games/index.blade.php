@@ -16,10 +16,14 @@
                     <h4 class="text-sm font-bold text-gray-900 sm:hidden">
                         {{$game->home_team->tla}}
                     </h4>
-                    <h5 class="hidden mb-2 font-bold text-right text-gray-900 dark:text-white sm:flex md:text-3xl xl:text-5xl ">
-                        {{$game->home_team->name}}
-                    </h5>
-                    <img src="{{$game->home_team->crest}}" class="ml-3 mr-3 flags"/>
+                    <a href="{{ route('team.show', $game->home_team->id) }}">
+                        <div class="flex flex-col items-center">
+                            <h5 class="hidden mb-2 font-bold text-right text-gray-900 dark:text-white sm:flex md:text-3xl xl:text-5xl ">
+                                {{$game->home_team->name}}
+                            </h5>
+                            <img src="{{$game->home_team->crest}}" class="ml-3 mr-3 flags"/>
+                        </div>
+                    </a>
                 </div>
             </div>
     
@@ -51,8 +55,7 @@
                     </div>
                 </div>
     {{-- HIER KOMT STRAKS EEN LINK --}}
-<a href="{{route('games.edit', $game)}}" class="focus:outline-none bg-yellow-200 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900">Update score</a>
-
+    <a href="{{route('games.edit', $game)}}" class="hidden md:inline md:focus:outline-none md:bg-yellow-200 md:hover:bg-yellow-500 md:focus:ring-4 md:focus:ring-yellow-300 md:font-medium md:rounded-lg text-sm md:px-5 md:py-2.5 md:me-2 mb-2 dark:focus:ring-yellow-900 w-40">Update score</a>
             </div>
             {{--  middle part end --}}
             {{-- right side --}}
@@ -62,10 +65,14 @@
                     <h4 class="text-sm font-bold text-gray-900 sm:hidden">
                         {{$game->away_team->tla}}
                     </h4>
-                    <h5 class="hidden mb-2 font-bold text-gray-900 dark:text-white sm:flex md:text-3xl xl:text-5xl text-wrap">
-                        {{$game->away_team->name}}
-                    </h5>
-                    <img src="{{$game->away_team->crest}}" class="ml-3 mr-3 flags"/>
+                    <a href="{{ route('team.show', $game->away_team->id) }}">
+                        <div class="flex flex-col items-center">
+                            <h5 class="hidden mb-2 font-bold text-gray-900 dark:text-white sm:flex md:text-3xl xl:text-5xl text-wrap">
+                                {{$game->away_team->name}}
+                            </h5>
+                            <img src="{{$game->away_team->crest}}" class="ml-3 mr-3 flags"/>
+                        </div>
+                    </a>
                 </div>
                 {{-- end away team --}}
             </div>
@@ -74,4 +81,3 @@
     </section>
     {{-- end of all games --}}
     </x-app-layout>
-    
