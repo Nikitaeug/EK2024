@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Standing;
 use Illuminate\Http\Request;
 
 class StandingsController extends Controller
@@ -11,7 +12,9 @@ class StandingsController extends Controller
      */
     public function index()
     {
-        
+        $standings = Standing::all();
+
+        return view('standings.index', compact('standings'));
     }
 
     /**
