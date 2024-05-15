@@ -20,7 +20,7 @@ class MatchesSeeder extends Seeder
         foreach ($games['matches'] as $game) {
             
             if ($game['stage'] !== 'GROUP_STAGE') {
-                exit;
+                continue;
             }
             Game::create(
                 [

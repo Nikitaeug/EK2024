@@ -5,7 +5,6 @@
     
     {{-- beginning of all games --}}
     <section class="flex flex-col items-center">
-    
     @foreach ($games as $game)
     {{-- flex flex-row items-center justify-center --}}
         <section class="grid grid-cols-3 p-1 mb-4 text-center bg-white border border-gray-200 rounded-lg shadow w-fit sm:w-11/12 md:w-9/12 sm:p-8 dark:bg-gray-800 dark:border-gray-70" id="game_{{$game->id}}">
@@ -42,7 +41,7 @@
                 <div class="flex items-center justify-around space-x-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse md:min-w-40 xl:min-w-72">
                     <div class="w-1 sm:w-auto bg-yellow-300 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                         <div class="text-left rtl:text-right">
-                            <div class="font-sans font-semibold text-gray-900 text-1xl md:text-2xl lg:txt-4l">{{$game->scoreAwayFullTime ?? 0}}</div>
+                            <div class="font-sans font-semibold text-gray-900 text-1xl md:text-2xl lg:txt-4l">{{$game->scoreHomeFullTime ?? 0}}</div>
                         </div>
                     </div>
                     <div>

@@ -3,7 +3,7 @@
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-100 dark:text-white">Update score</h1>
     </header>
  
-    <form action="" method="post" class="flex justify-center">
+    <form action="{{ route('games.update', $game) }}" method="post" class="flex justify-center">
         @csrf
         @method('PUT')
         <div class="grid grid-cols-3 p-1 mb-4 text-center bg-white border border-gray-200 rounded-lg shadow w-fit sm:w-11/12 md:w-9/12 sm:p-8 dark:bg-gray-800 dark:border-gray-70" id="game_{{$game->id}}">
@@ -28,7 +28,7 @@
                 <div class="flex items">
                     <div class="w-1 sm:w-auto bg-yellow-300 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                         <div class="text-left rtl:text-right">
-                            <input type="number" class="font-sans font-semibold text-gray-900 text-1xl md:text-2xl lg:txt-4l">{{$game->scoreAwayFullTime ?? 0}}</input>
+                            <input type="number" name="scoreHomeFullTime" class="font-sans font-semibold text-gray-900 text-1xl md:text-2xl lg:txt-4l max-w-14" value="{{$game->scoreHomeFullTime ?? 0}}">
                         </div>
                     </div>
                     <div>
@@ -36,7 +36,8 @@
                     </div>
                     <div class="w-1 sm:w-auto bg-yellow-300 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                         <div class="text-left rtl:text-right">
-                            <div class="font-sans font-semibold text-gray-900 text-1xl md:text-2xl lg:txt-4l">{{$game->scoreAwayFullTime ?? 0 }}</div>
+                            <input type="number" name="scoreAwayFullTime" class="font-sans font-semibold text-gray-900 text-1xl md:text-2xl lg:txt-4l max-w-14" value="{{$game->scoreAwayFullTime ?? 0}}">
+ 
                         </div>
                     </div>
                 </div>
@@ -52,6 +53,7 @@
                     <img src="{{$game->away_team->crest}}" class="ml-3 mr-3 flags"/>
                 </div>
             </div>
+            <button class="w-50">Update</button>
         </div>
     </form>
 </x-app-layout>
