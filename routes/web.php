@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\Teamcontroller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StandingsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,3 +30,5 @@ Route::get('/team/{id}', [Teamcontroller::class, 'show'])->name('team.show');
 require __DIR__.'/auth.php';
 
 Route::put('/games/{game}/edit', [GameController::class, 'update'])->name('games.update');
+
+Route::get('/standings', [StandingsController::class, 'index'])->name('standings.index');
