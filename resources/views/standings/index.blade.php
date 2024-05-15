@@ -1,62 +1,93 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Standings
-        </h2>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @if (count($standings) > 0)
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Team
-                                </th>
-                                <!-- Other headers here -->
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($standings as $standing)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->team->name }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->position }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->played }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->won }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->draw }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->lost }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->points }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->goalsFor }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->goalsAgainst }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">{{ $standing->goalDifference }}</div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @endif
+<x-app-layout>
+    <div class="grid grid-cols-2 shadow-md relativeoverflow-x-auto sm:rounded-lg gap-7">
+        @foreach($standings as $groupname => $group)
+        <div class="w-max">
+            <h2 class="m-3 text-xl text-center text-white">{{$groupname}}</h2>
+            <table class="w-full text-left text-gray-500 w-fulltext-sm rtl:text-right dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">P</th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Vlag</span>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Land
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            P
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            G
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            W
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            G
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            V
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Gv
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Gt
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Ds
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($group as $row)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <!-- Other cells here -->
+                        <td class="px-6 py-4">
+                            <img src="{{$standings->home_team->crest}}" alt="{{ $row->name }} flag" class="w-6 h-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                            {{ $row->name }}
+                        </td>
+                        <td class="p-4">
+                            {{$loop->iteration}}
+                        </td>
+                        <td class="px-6 py-4">
+                            tekst hier
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                            tekst hier
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                        <td class="px-6 py-4">
+                            0
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
+        @endforeach
     </div>
 </x-app-layout>

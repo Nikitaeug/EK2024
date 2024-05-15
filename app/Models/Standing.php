@@ -13,4 +13,5 @@ class Standing extends Model
     {
         return $this->belongsTo(Team::class);
     }
+    
 }
